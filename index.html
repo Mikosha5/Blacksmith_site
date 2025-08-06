@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вереск - Кузнечная мастерская мечей и доспехов</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Old+Standard+TT:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Old Standard TT', serif;
+            color: #e0c79e;
+            background-color: #0c0b0a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+        }
+        
+        /* Шапка и навигация */
+        header {
+            background-color: rgba(22, 18, 15, 0.85);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid #a67443;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #c9a86b;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: #e0c79e;
+            text-decoration: none;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: #a67443;
+            color: #0c0b0a;
+        }
+        
+        /* Главный баннер с анимацией */
+        #fon {
+            height: 100vh;
+            background: linear-gradient(rgba(12, 11, 10, 0.7), rgba(12, 11, 10, 0.9)), url('https://i.gifer.com/GXmQ.gif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .fon-content {
+            max-width: 800px;
+            z-index: 10;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            letter-spacing: 3px;
+        }
+        
+        .fon-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #a67443, #8b5e2d);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(to right, #8b5e2d, #6e4a21);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        /* Аккордеон */
+    .accordion {
+        margin-bottom: 2rem;
+        border: 1px solid #a67443;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .accordion-item {
+        border-bottom: 1px solid #3a2c1e;
+    }
+    
+    .accordion-item:last-child {
+        border-bottom: none;
+    }
+    
+    .accordion-btn {
+        width: 100%;
+        text-align: left;
+        background: rgba(166, 116, 67, 0.2);
+        border: none;
+        padding: 1.2rem 1.5rem;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #e0c79e;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .accordion-btn:hover, .accordion-btn.active {
+        background: rgba(166, 116, 67, 0.4);
+    }
+    
+    .accordion-btn i {
+        transition: transform 0.3s;
+    }
+    
+    .accordion-btn.active i {
+        transform: rotate(180deg);
+    }
+    
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        background: rgba(58, 44, 30, 0.4);
+        transition: max-height 0.3s ease-out;
+    }
+    
+    .accordion-content p {
+        padding: 0 1.5rem 1.5rem;
+        margin: 0;
+    }
+    
+    /* Слайдер */
+    .slider-container {
+        position: relative;
+        margin: 0 auto;
+        max-width: 1200px;
+        overflow: hidden;
+    }
+    
+    .slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+    
+    .slide {
+        min-width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    
+    .slider-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(166, 116, 67, 0.7);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        z-index: 10;
+        transition: all 0.3s;
+    }
+    
+    .slider-nav:hover {
+        background: rgba(166, 116, 67, 1);
+    }
+    
+    .prev {
+        left: 20px;
+    }
+    
+    .next {
+        right: 20px;
+    }
+    
+    .slider-dots {
+        text-align: center;
+        padding: 20px 0;
+    }
+    
+    .dot {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: rgba(166, 116, 67, 0.5);
+        border-radius: 50%;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    
+    .dot.active, .dot:hover {
+        background: #a67443;
+    }
+    
+    @media (max-width: 768px) {
+        .slider-nav {
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+        }
+        
+        .accordion-btn {
+            padding: 1rem;
+            font-size: 1rem;
+        }
+    }
+        /* Разделы */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        #about {
+            background-color: #1a1715;
+            border-top: 1px solid #a67443;
+            border-bottom: 1px solid #a67443;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #a67443;
+            bottom: 0;
+            left: 25%;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-image img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Раздел с товарами */
+        #products {
+            position: relative;
+            background: #0c0b0a;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: rgba(22, 18, 15, 0.8);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 1px solid #a67443;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #c9a86b;
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #a67443;
+            margin: 1rem 0;
+        }
+        
+        /* Раздел контактов */
+        #contacts {
+            background: #1a1715;
+            border-top: 1px solid #a67443;
+            border-bottom: 1px solid #a67443;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #c9a86b;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            width: 30px;
+            color: #a67443;
+        }
+        
+        .map-wrapper {
+            flex: 2;
+            min-height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+                
+        /* Подвал */
+        footer {
+            background: #0c0805;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #a67443;
+            color: #8d7b63;
+        }
+        
+        .social-links {
+            margin-bottom: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 1rem;
+            color: #a67443;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #c9a86b;
+        }
+        
+        /* Модальные окна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.4s;
+        }
+        
+        .modal-content {
+            background: linear-gradient(145deg, #1a1715, #120f0e);
+            margin: 5% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            position: relative;
+            border: 2px solid #a67443;
+            box-shadow: 0 0 25px rgba(166, 116, 67, 0.3);
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            color: #c9a86b;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .close:hover {
+            color: #fff;
+            transform: scale(1.2);
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-title h2 {
+            font-size: 2.2rem;
+            color: #c9a86b;
+            letter-spacing: 2px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #e0c79e;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(166, 116, 67, 0.1);
+            border: 1px solid #a67443;
+            border-radius: 4px;
+            color: #e0c79e;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #c9a86b;
+            background: rgba(166, 116, 67, 0.2);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .form-footer a {
+            color: #c9a86b;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .form-footer a:hover {
+            color: #a67443;
+            text-decoration: underline;
+        }
+        
+        .form-separator {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+        
+        .form-separator div {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #a67443, transparent);
+        }
+        
+        .form-separator span {
+            padding: 0 15px;
+            font-weight: bold;
+            color: #a67443;
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+            gap: 15px;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(166, 116, 67, 0.2);
+            color: #c9a86b;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .social-btn:hover {
+            background: rgba(166, 116, 67, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            nav ul li a {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .map-wrapper {
+                min-height: 300px;
+            }
+            
+            .modal-content {
+                padding: 20px;
+                width: 95%;
+                margin: 10% auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.3rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-fire" style="color: #a67443; font-size: 2.3rem; margin-right: 10px;"></i>
+                <div class="logo-text">Вереск</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#hero" class="active">Главная</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#products">Товары</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                    <li><a href="#" onclick="openModal('login')" id="loginBtn">Вход</a></li>
+                    <li><a href="#" onclick="openModal('register')" class="btn">Регистрация</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!--секция с анимированным фоном -->
+    <section id="fon">
+        <div class="fon-content">
+            <h1>Создаем легенды из металла</h1>
+            <p>Каждый клинок и доспех в нашей кузнечной мастерской — это результат многовековых традиций и современного мастерства, воплощённый в стали.</p>
+            <div style="display:flex; gap: 15px; justify-content:center;">
+                <a href="#products" class="btn">Наши работы</a>
+                <a href="#" class="btn" onclick="openModal('register')">Стать клиентом</a>
+            </div>
+        </div>
+    </section>
+<!-- Раздел "О нас" с аккордеоном -->
+<section id="about">
+    <div class="section-title">
+        <h2>О нашей мастерской</h2>
+    </div>
+    <div class="about-content">
+        <div class="about-text">
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <span>История мастерской</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Кузница была создана в 2015 году молодым ИСБ-бойцом Владимиром Ивлевым. Изначально работа шла на изготовление предметов реконструкции разных периодов и регионов, но время шло и в последнее время мастерская полностью перешла на производство доспехов из титана для исторического средневекового боя, реконструкции и полевых ролевых игр</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <span>Наши технологии</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Используем как традиционные техники ковки (трёхслойный пакет, торсионная сварка), так и современные методы обработки стали. Для доспехов применяем исторически точные методы клёпки и подвижного соединения элементов.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <span>Материалы и качество</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Работаем только с сертифицированными сталями: 1060, 1095, дамасская и булатная сталь. Все изделия проходят 3 этапа контроля качества. На мечи предоставляем пожизненную гарантию.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <span>Индивидуальные заказы</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Создаем уникальное оружие по вашему эскизу. Работаем с древесиной ценных пород, натуральной кожей, полудрагоценными камнями. Среднее время изготовления индивидуального заказа - 1-3 месяца.</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#contacts" class="btn">Связаться с нами</a>
+        </div>
+        <div class="about-image">
+            <img src="images\work.jpg" alt="Кузнец за работой" style="height: 350px; object-fit: cover;"">
+        </div>
+    </div>
+</section>
+
+<!-- Раздел "Товары" со слайдером -->
+<section id="products">
+    <div class="section-title">
+        <h2>Наши работы</h2>
+    </div>
+    
+    <div class="slider-container">
+        <div class="slider">
+            <!-- Слайд 1 -->
+            <div class="slide active">
+                <div class="product-card" style="min-height: 100%;">
+                    <div class="product-image" style="height: 250px; display: flex; align-items: center; justify-content: center;">
+                        <img src="images\sword.jpg" alt="Меч рыцаря" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Двуручный меч ведьмака</h3>
+                        <p>Сувенирный фэнтези меч, основанный по серии игр "Ведьмак". <br>
+                        Материал: <br>
+                        "Лезвие": сталь 65г, закалка 50ед. по реквелу.<br>
+                    "Ножны": дерево, кожа.</p>
+                        <div class="product-price">7 900 ₽</div>
+                        <button class="btn" onclick="alert('Спасибо за заказ!')">Заказать</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Слайд 2 -->
+            <div class="slide">
+                <div class="product-card" style="min-height: 100%;">
+                    <div class="product-image"  style="height: 350px; display: flex; align-items: center; justify-content: center;">
+                        <img src="images\sab.jpg" alt="Рыцарские доспехи" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Сабатоны</h3>
+                        <p>Крепкие сабатоны для защиты стопы. <br>
+                            Материал: Титан ОТ-4 <br>
+                        Вес: 200г</p>
+                        <div class="product-price">7000 ₽</div>
+                        <button class="btn" onclick="alert('Спасибо за заказ!')">Заказать</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Слайд 3 -->
+            <div class="slide">
+                <div class="product-card" style="min-height: 100%;">
+                    <div class="product-image"  style="height: 350px; display: flex; align-items: center; justify-content: center;">
+                        <img src="images\gloves.jpg" alt="Кинжал" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Руковицы титановые</h3>
+                        <p>Руковицы для защиты кистей с надёжным креплением рукояти меча/алебарды к руке.<br> 
+                            Материал: Титан ОТ-4 <br>
+                            Вес: 180г
+                        </p>
+                        <div class="product-price">6 500 ₽</div>
+                        <button class="btn" onclick="alert('Спасибо за заказ!')">Заказать</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Слайд 4 -->
+            <div class="slide">
+                <div class="product-card" style="min-height: 100%;">
+                    <div class="product-image" style="height: 350px; display: flex; align-items: center; justify-content: center;">
+                        <img src="images/axe.jpg" alt="Боевой топор" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Боевой топор</h3>
+                        <p>Материал:<br>
+                            "Топор": Сталь 60г, закалка 55ед. по реквелу <br>
+                        "Рукоять": Ясеневое древко с покрытием твёрдым воском</p>
+                        <div class="product-price">4500 ₽</div>
+                        <button class="btn" onclick="alert('Спасибо за заказ!')">Заказать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Навигация слайдера -->
+        <button class="slider-nav prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="slider-nav next" onclick="moveSlide(1)">&#10095;</button>
+        
+        <!-- Индикаторы слайдов -->
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+    </div>
+</section>
+
+    <!-- Раздел контактов -->
+    <section id="contacts">
+        <div class="section-title">
+            <h2>Контакты</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Наша кузница</h3>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>г. Армавир, ул. Ленина, д. 25</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div>+7 (495) 765-4321</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div>forge@veresk.ru</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div>ПН-ПТ: 10:00-19:00 | СБ: 11:00-17:00 | ВС: выходной</div>
+                </div>
+                
+                <h3>Присоединяйтесь</h3>
+                <p>Подписывайтесь на нас в социальных сетях, чтобы быть в курсе всех новостей и акций!</p>
+                <div class="social-links">
+                    <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
+            
+            <div class="map-wrapper">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A8b15600937e3b2912d91ca577a6b3261e5905e149415d49e5e3871a692c4bfad&amp;source=constructor" frameborder="0"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+        <p>&copy; 2025 Кузнечная мастерская "Вереск". Все права защищены.</p>
+        <p style="margin-top: 15px;"><small>При создании мечей соблюдаются все требования законодательства РФ</small></p>
+    </footer>
+
+    <!-- Модальное окно входа -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('login')">&times;</span>
+            <div class="form-title">
+                <h2><i class="fas fa-lock" style="margin-right: 10px;"></i>Вход в кузницу</h2>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="loginEmail" placeholder="Введите ваш email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="loginPassword" placeholder="Введите ваш пароль" required>
+            </div>
+            
+            <div class="form-group" style="text-align: right; margin-top: -5px;">
+                <a href="#" style="font-size: 0.9rem; color: #c9a86b; text-decoration: underline;">Забыли пароль?</a>
+            </div>
+            
+            <button class="btn btn-block" onclick="loginUser()">Войти в систему</button>
+            
+            <div class="form-separator">
+                <div></div>
+                <span>или</span>
+                <div></div>
+            </div>
+            
+            <div class="social-login">
+                <div class="social-btn"><i class="fab fa-vk"></i></div>
+                <div class="social-btn"><i class="fab fa-google"></i></div>
+                <div class="social-btn"><i class="fab fa-facebook-f"></i></div>
+            </div>
+            
+            <div class="form-footer">
+                <p>Еще не в рядах кузнецов? <a href="#" onclick="openModal('register')">Создать аккаунт</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('register')">&times;</span>
+            <div class="form-title">
+                <h2><i class="fas fa-hammer" style="margin-right: 10px;"></i>Регистрация в кузнице</h2>
+            </div>
+            
+            <div class="form-group">
+                <label for="name">Имя</label>
+                <input type="text" id="regName" placeholder="Ваше имя" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="regEmail" placeholder="Ваш email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="regPassword" placeholder="Придумайте пароль" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirm-password">Повторите пароль</label>
+                <input type="password" id="regConfirmPassword" placeholder="Повторите пароль" required>
+            </div>
+            
+            <div class="form-group" style="display: flex; align-items: center;">
+                <input type="checkbox" id="terms" style="width: auto; margin-right: 10px;">
+                <label for="terms" style="margin-bottom: 0;">Я принимаю условия использования сервиса</label>
+            </div>
+            
+            <button class="btn btn-block" onclick="registerUser()">Зарегистрироваться</button>
+            
+            <div class="form-separator">
+                <div></div>
+                <span>уже с нами?</span>
+                <div></div>
+            </div>
+            
+            <div class="form-footer">
+                <p>Уже имеете аккаунт? <a href="#" onclick="openModal('login')">Войти сейчас</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Функция для прокрутки к разделам
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if(this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Аккордеон
+    const accordionBtns = document.querySelectorAll('.accordion-btn');
+    accordionBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    });
+    
+    // Слайдер
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        
+        document.querySelector('.slider').style.transform = `translateX(-${index * 100}%)`;
+        currentSlide = index;
+    }
+    
+    function moveSlide(direction) {
+        let newIndex = currentSlide + direction;
+        
+        if (newIndex < 0) {
+            newIndex = slides.length - 1;
+        } else if (newIndex >= slides.length) {
+            newIndex = 0;
+        }
+        
+        showSlide(newIndex);
+    
+    };
+        // Функции открытия модальных окон
+        function openModal(modalType) {
+            document.body.style.overflow = 'hidden';
+            
+            if(modalType === 'login') {
+                document.getElementById('loginModal').style.display = 'block';
+            } else if(modalType === 'register') {
+                document.getElementById('registerModal').style.display = 'block';
+            }
+        }
+        
+        // Функция закрытия модальных окон
+        function closeModal(modalType) {
+            document.body.style.overflow = 'auto';
+            
+            if(modalType === 'login') {
+                document.getElementById('loginModal').style.display = 'none';
+            } else if(modalType === 'register') {
+                document.getElementById('registerModal').style.display = 'none';
+            }
+        }
+        
+        // Закрытие при клике вне модалки
+        window.addEventListener('click', function(event) {
+            if(event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Имитация регистрации 
+        function registerUser() {
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+            
+            if (!name || !email || !password || !confirmPassword) {
+                alert('Все поля обязательны для заполнения');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Пароли не совпадают');
+                return;
+            }
+            
+            // Сохранение в localStorage 
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userPassword', password);
+            
+            alert('Регистрация успешно завершена! ' + name + ', теперь вы можете войти в свою кузницу.');
+            closeModal('register');
+        }
+
+        // Имитация входа 
+        function loginUser() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            const storedEmail = localStorage.getItem('userEmail');
+            const storedPassword = localStorage.getItem('userPassword');
+            
+            if (email === storedEmail && password === storedPassword) {
+                alert('Вход выполнен успешно! Добро пожаловать в кузницу.');
+                document.getElementById('loginBtn').innerHTML = '<i class="fas fa-user"></i> Аккаунт';
+                closeModal('login');
+            } else {
+                alert('Неверный email или пароль');
+            }
+        }
+    </script>
+</body>
+</html>
