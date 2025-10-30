@@ -90,46 +90,55 @@
         }
         
         /* Главный баннер с анимацией */
-        #fon {
-            height: 100vh;
-            background: linear-gradient(rgba(12, 11, 10, 0.7), rgba(12, 11, 10, 0.9)), url('https://i.gifer.com/GXmQ.gif');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-        }
-        
-        .fon-content {
-            max-width: 800px;
-            z-index: 10;
-            animation: fadeIn 1.5s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            letter-spacing: 3px;
-            position: center;
-        }
-        
-        .fon-content p {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            position: center;
-        }
+      #fon {
+    height: 100vh;
+    background: linear-gradient(rgba(12, 11, 10, 0.7), rgba(12, 11, 10, 0.9)), url('https://i.gifer.com/GXmQ.gif');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;      /* Центрирует по вертикали */
+    align-items: center;          /* Центрирует по горизонтали */
+    text-align: center;           /* Выравнивает текст по центру */
+    padding: 2rem;
+    position: relative;
+}
+
+.fon-content {
+    max-width: 800px;
+    z-index: 10;
+    animation: fadeIn 1.5s ease-out;
+    width: 100%;                   /* Гарантирует, что блок занимает доступную ширину (в рамках max-width) */
+    box-sizing: border-box;       /* Учитывает padding в общей ширине */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    letter-spacing: 3px;
+    /* position: center; — УДАЛЕНО: это некорректное значение */
+    margin-left: auto;            /* Дополнительно центрирует при необходимости */
+    margin-right: auto;
+    max-width: 100%;             /* Не выходит за границы родителя */
+}
+
+.fon-content p {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    /* position: center; — УДАЛЕНО: это некорректное значение */
+    margin-left: auto;            /* Центрирует абзац внутри .fon-content */
+    margin-right: auto;
+    text-align: center;           /* Явное выравнивание текста по центру */
+}
+
         
         .btn {
             display: inline-block;
@@ -1159,6 +1168,7 @@
 </body>
 
 </html>
+
 
 
 
