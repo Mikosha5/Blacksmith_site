@@ -259,23 +259,13 @@ h1 {
         background: rgba(166, 116, 67, 1);
     }
     
-
-.arrows-container {
-  display: flex;
-  align-items: center;     /* вертикальное центрирование */
-  justify-content: space-between; /* раздвигаем стрелки по краям */
-  height: 100%;             /* высота контейнера (например, слайдера) */
-  padding: 0 20px;         /* отступы от краёв */
-}
-
-.prev, .next {
-  /* стили кнопок (размер, цвет и т. п.) */
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: #ddd;
-  cursor: pointer;
-}
+    .prev {
+        left: 20px;
+    }
+    
+    .next {
+        right: 20px;
+    }
     
     .slider-dots {
         text-align: center;
@@ -893,10 +883,10 @@ h1 {
         </div>
         
         <!-- Навигация слайдера -->
-        <div class = "arrows-container">
-        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="next" onclick="moveSlide(1)">&#10095;</button>
-        </div>
+ 
+        <button class="slider-nav prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="slider-nav next" onclick="moveSlide(1)">&#10095;</button>
+ 
         <!-- Индикаторы слайдов -->
         <div class="slider-dots">
             <span class="dot active" onclick="currentSlide(1)"></span>
@@ -1179,6 +1169,7 @@ h1 {
 </body>
 
 </html>
+
 
 
 
